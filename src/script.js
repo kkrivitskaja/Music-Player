@@ -5,9 +5,8 @@ const nextBtn = document.querySelector('#next');
 const audio = document.querySelector('#audio');
 const progress = document.querySelector('.progress');
 const progressContainer = document.querySelector('.progress-container');
-const songTitle = document.getElementById('title');;
+const songTitle = document.getElementById('title');
 const cover = document.getElementById('cover');
-
 
 console.log(songTitle);
 
@@ -23,12 +22,26 @@ function loadSong(song) {
     cover.src = `./images/${song}.jpg`;
 }
 
+function playSong() {
+    musicContainer.classList.add('play');
+    playBtn.querySelector('i.fas').classList.remove('fa-play')
+    playBtn.querySelector('i.fas').classList.add('fa-pause');
+    audio.play();
+}
+
+function pauseSong() {
+     musicContainer.classList.remove('play');
+     playBtn.querySelector('i.fas').classList.remove('fa-pause');
+    playBtn.querySelector('i.fas').classList.add('fa-play');
+    audio.pause();
+}
+
 playBtn.addEventListener('click', () => {
-    const isPlaying = musicContainer.classList.contains('play')
+    const isPlaying = musicContainer.classList.contains('play');
 
     if (isPlaying) {
-        payseSong()
+        pauseSong();
     } else {
-        playSong()
+        playSong();
     }
-})
+});
